@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}
+Welcome to blog||Postlist
+{% endblock %}
+{% block header %}
+	{% load staticfiles %}
+<div class="headersection templete clear">
+		
+		<a href="">
+			{% for logo in list_logo %}
+			<div class="logo">
+				<img src="{{logo.image.url}}" alt="Logo"/>
+				<h2>{{logo.title}}</h2>
+				<p>{{logo.description}}</p>
+			</div>
+			{% endfor %}
+		</a>
+
+		<div class="social clear">
+			<div class="icon clear">
+				<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+				<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+			</div>
+			<div class="searchbtn clear">
+			<form action="" method="post">
+				<input type="text" name="keyword" placeholder="Search keyword..."/>
+				<input type="submit" name="submit" value="Search"/>
+			</form>
+			</div>
+		</div>
+	</div>
+<div class="navsection templete">
+	<ul>
+		<li><a id="active" href="/">Home</a></li>
+		<li><a href="{% url 'about' %}">About</a></li>	
+		<li><a href="{% url 'contact' %}">Contact</a></li>
+	</ul>
+</div>
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<div class="contentsection contemplete clear">
+		<div class="maincontent clear">
+			<div class="about">
+				<h2>{{all_posts.title}}</h2>
+				<h4>{{all_posts.cur_date}}</h4>
+				<img src="{{all_posts.image.url}}" alt="MyImage"/>
+				<p>{{all_posts.description}}</p>
+				
+				
+				<div class="relatedpost clear">
+					<h2>Related articles</h2>
+					<a href="#"><img src="{{all_posts.image.url}}" alt="post image"/></a>
+					
+				</div>
+	</div>
+
+		</div>
+		<div class="sidebar clear">
+			<div class="samesidebar clear">
+				<h2>Latest articles</h2>
+
+					{% for category in all_categoris%}
+					<ul>
+						<li><a href="#">{{category.categoryName}}</a></li>
+												
+					</ul>
+					{% endfor %}
+			</div>
+			<div class="samesidebar clear">
+				<h2>Popular articles</h2>
+					<div class="popular clear">
+						<h3><a href="#">Post title will be go here..</a></h3>
+						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
+						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
+					</div>
+					
+					<div class="popular clear">
+						<h3><a href="#">Post title will be go here..</a></h3>
+						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
+						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
+					</div>
+					
+					<div class="popular clear">
+						<h3><a href="#">Post title will be go here..</a></h3>
+						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
+						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
+					</div>
+					
+					<div class="popular clear">
+						<h3><a href="#">Post title will be go here..</a></h3>
+						<a href="#"><img src="images/post1.jpg" alt="post image"/></a>
+						<p>Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.Sidebar text will be go here.</p>	
+					</div>				
+				
+			</div>
+			
+		</div>
+	</div>
+{% endblock %}
